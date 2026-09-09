@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#506a78">
+  <meta name="description" content="">
+  <title></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="intro.css">
+  <script src="config.js"></script>
+  <script src="intro.js"></script>
+</head>
+<body>
+  <section class="envelope-intro" id="envelope-intro" data-state="closed" aria-label="Invitation envelope" hidden>
+    <div class="intro-composition">
+      <button class="intro-envelope" id="intro-open" type="button" aria-describedby="intro-hint">
+        <span class="intro-back" aria-hidden="true"></span>
+        <span class="intro-card" aria-hidden="true">
+          <span class="intro-card-label" data-content="intro.label"></span>
+          <span class="intro-card-name" data-content="graduate.shortName"></span>
+          <span class="intro-card-date" data-content="ceremony.date.full"></span>
+          <span class="intro-card-year"><span data-content="labels.classOf"></span> <span data-content="graduate.classOf"></span></span>
+        </span>
+        <span class="intro-pocket" aria-hidden="true"></span>
+        <span class="intro-flap" aria-hidden="true"></span>
+        <span class="intro-address" aria-hidden="true"><span data-content="intro.recipient"></span><span data-content="intro.label"></span></span>
+      </button>
+      <p id="intro-hint" data-content="intro.openText"></p>
+    </div>
+  </section>
+  <a class="skip-link" href="#invitation" data-content="site.skipLink"></a>
+  <main>
+    <section class="cover" aria-labelledby="cover-title">
+      <p class="eyebrow cover-kicker" data-content="hero.eyebrow"></p>
+      <h1 id="cover-title" class="cover-title"><span data-content="hero.title"></span><span data-content="hero.subtitle"></span></h1>
+      <div class="cover-details"><p class="eyebrow" data-content="graduate.university"></p><p class="cover-name" data-content="graduate.name"></p><p class="eyebrow"><span data-content="labels.classOf"></span> <span data-content="graduate.classOf"></span></p></div>
+      <a class="scroll-cue" href="#invitation"><span data-content="hero.scrollPrompt"></span><span class="scroll-line" aria-hidden="true"></span></a>
+      <span class="cover-edition" aria-hidden="true" data-content="hero.edition"></span>
+    </section>
+    <section id="invitation" class="opening" aria-labelledby="invitation-title">
+      <div class="opening-stage">
+        <p class="script backdrop-script" aria-hidden="true" data-content="invitation.backdropHeading"></p>
+        <div class="invitation-arrangement">
+          <div class="envelope-back" aria-hidden="true"></div>
+          <div class="envelope-flap" aria-hidden="true"><img src="assets/envelope-flap.webp" alt="" width="476" height="227"></div>
+          <article class="invitation-paper">
+            <p class="eyebrow university" data-content="graduate.university"></p>
+            <div class="invitation-date"><p data-content="ceremony.date.full"></p><p data-content="ceremony.time"></p><p class="venue-short" data-content="ceremony.venue"></p></div>
+            <p class="eyebrow from-label" data-content="invitation.fromLabel"></p>
+            <h2 id="invitation-title" class="script" data-content="graduate.shortName"></h2>
+            <p class="invitation-copy" data-content="invitation.messages.0"></p>
+            <p class="invitation-copy" data-content="invitation.messages.1"></p>
+            <p class="eyebrow card-year"><span data-content="labels.classOf"></span> <span data-content="graduate.classOf"></span></p>
+          </article>
+          <div class="envelope-pocket" aria-hidden="true"><img src="assets/envelope-pocket.webp" alt="" width="476" height="323"></div>
+          <figure class="portrait-print"><img data-image="images.portrait" alt="" width="800" height="1000"><figcaption class="script" data-content="invitation.portraitCaption"></figcaption></figure>
+        </div>
+        <p class="opening-note eyebrow" data-content="invitation.openingNote"></p>
+      </div>
+    </section>
+    <section class="memories" aria-labelledby="memory-title" data-section="memories">
+      <div class="memory-intro reveal"><p class="eyebrow" data-content="memories.eyebrow"></p><h2 id="memory-title" class="script" data-content="memories.title"></h2></div>
+      <div class="scrapbook">
+        <figure class="photo-print memory-one reveal"><span class="tape" aria-hidden="true"></span><img data-image="images.memories.0" alt="" loading="lazy" width="800" height="1000"><figcaption data-content="images.memories.0.caption"></figcaption></figure>
+        <figure class="photo-print memory-two reveal"><img data-image="images.memories.1" alt="" loading="lazy" width="1000" height="1000"><figcaption data-content="images.memories.1.caption"></figcaption></figure>
+        <figure class="photo-print memory-three reveal"><span class="tape" aria-hidden="true"></span><img data-image="images.memories.2" alt="" loading="lazy" width="1200" height="800"><figcaption data-content="images.memories.2.caption"></figcaption></figure>
+        <p class="memory-note script reveal" data-lines="memories.closingLines"></p>
+      </div>
+    </section>
+    <section class="ceremony" aria-labelledby="ceremony-title" data-section="ceremony">
+      <div class="ceremony-intro reveal"><p class="eyebrow" data-content="ceremonySection.eyebrow"></p><h2 id="ceremony-title" class="script" data-lines="ceremonySection.titleLines"></h2></div>
+      <article class="ceremony-paper reveal"><p class="eyebrow" data-content="ceremonySection.cardLabel"></p><p class="ceremony-day" data-content="ceremony.date.day"></p><p class="ceremony-month" data-content="ceremony.date.month"></p><p class="eyebrow" data-content="ceremony.date.year"></p><span class="fine-rule" aria-hidden="true"></span><p class="ceremony-time" data-content="ceremony.time"></p><p class="ceremony-venue" data-content="ceremony.venue"></p><p class="ceremony-address" data-content="ceremony.address"></p><p class="ceremony-timezone" data-content="ceremony.timezone"></p></article>
+    </section>
+    <section class="personal-message" aria-labelledby="message-title" data-section="personalMessage"><div class="message-content reveal"><p class="eyebrow" id="message-title" data-content="personalMessage.eyebrow"></p><p class="message-text" data-content="personalMessage.paragraphs.0"></p><p class="message-text" data-lines="personalMessage.paragraphs.1"></p><p class="script signature" data-content="personalMessage.signature"></p><span class="fine-rule" aria-hidden="true"></span></div></section>
+    <section class="rsvp" aria-labelledby="rsvp-title" data-section="rsvp"><div class="reply-slip reveal"><p class="eyebrow" id="rsvp-title" data-content="rsvp.eyebrow"></p><button class="rsvp-button" id="rsvp-button" type="button"><span data-content="rsvp.label"></span> <span aria-hidden="true">↗</span></button><p class="reply-note" data-content="rsvp.note"></p></div></section>
+    <footer class="farewell"><p class="eyebrow reveal" data-content="ending.eyebrow"></p><h2 class="script reveal" data-lines="ending.titleLines"></h2><div class="reveal"><p class="farewell-name" data-content="graduate.name"></p><p class="eyebrow"><span data-content="labels.classOf"></span> <span data-content="graduate.classOf"></span></p></div><span class="farewell-line" aria-hidden="true"></span></footer>
+  </main>
+  <dialog id="rsvp-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description"><button class="dialog-close" type="button" aria-label="">×</button><p class="eyebrow" data-content="rsvp.dialog.eyebrow"></p><h2 id="dialog-title" class="script" data-content="rsvp.dialog.title"></h2><p id="dialog-description" data-content="rsvp.dialog.message"></p><button class="dialog-done" type="button" data-content="rsvp.dialog.doneLabel"></button></dialog>
+  <script src="app.js"></script>
+</body>
+</html>
