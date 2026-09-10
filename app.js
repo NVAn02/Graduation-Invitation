@@ -3,17 +3,32 @@
   const config = window.invitationConfig;
   if (!config) throw new Error('Missing invitationConfig. Load config.js before app.js.');
   const read = path => path.split('.').reduce((value, key) => value?.[key], config);
+  // Keep a person's name together, including when it appears inside a sentence.
+  const names = [...new Set([config.graduate.name, config.graduate.shortName].filter(Boolean))]
+    .sort((a,b) => b.length-a.length);
+  const namePattern = names.length ? new RegExp(`(${names.map(name => name.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')})`, 'g') : null;
+  function contentNodes(value) {
+    const text = String(value);
+    if (!namePattern) return [text];
+    return text.split(namePattern).map(part => {
+      if (!names.includes(part)) return part;
+      const name = document.createElement('span');
+      name.className = 'person-name';
+      name.textContent = part;
+      return name;
+    });
+  }
   document.documentElement.lang = config.site.language;
   document.title = config.site.title.replaceAll('{classOf}', config.graduate.classOf);
   document.querySelector('meta[name="description"]').content = config.site.description;
   document.querySelectorAll('[data-content]').forEach(element => {
     const value = read(element.dataset.content);
-    if (value !== undefined && value !== null) element.textContent = String(value);
+    if (value !== undefined && value !== null) element.replaceChildren(...contentNodes(value));
   });
   document.querySelectorAll('[data-lines]').forEach(element => {
     const lines = read(element.dataset.lines);
     if (!Array.isArray(lines)) return;
-    element.replaceChildren(...lines.flatMap((line, index) => index ? [document.createElement('br'), line] : [line]));
+    element.replaceChildren(...lines.flatMap((line, index) => index ? [document.createElement('br'), ...contentNodes(line)] : contentNodes(line)));
   });
   document.querySelectorAll('[data-image]').forEach(element => {
     const image = read(element.dataset.image);
