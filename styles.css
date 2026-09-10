@@ -12,3 +12,14 @@ a{color:inherit}button,a{-webkit-tap-highlight-color:transparent}a:focus-visible
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal-ready .reveal{opacity:1;translate:none}.opening-stage{min-height:820px}.photo-print{translate:none}}
 @media print{body{background:white;color:#243a46}body:before,.cover,.envelope-back,.envelope-pocket,.envelope-flap,.portrait-print,.opening-note,.backdrop-script,.memories,.rsvp,.farewell,.skip-link{display:none!important}.opening,.motion .opening{height:auto}.opening-stage,.motion .opening-stage{position:static;height:auto;min-height:0;padding:0}.invitation-arrangement{margin:0}.motion .invitation-paper{opacity:1;transform:none}.ceremony{display:block;break-before:page}.ceremony-intro{display:none}.reveal-ready .reveal{opacity:1;translate:none}.personal-message{min-height:0;padding:40px}.invitation-paper,.ceremony-paper{box-shadow:none}}
 .motion .envelope-flap{bottom:10%;margin-bottom:67.857%;height:auto;aspect-ratio:476/227}
+.opening-viewport-measure{position:fixed;inset:0 auto auto 0;width:0;height:100svh;visibility:hidden;pointer-events:none;contain:strict}
+.scrapbook{height:790px}
+.memory-note{top:510px}
+@media(min-width:601px) and (max-width:900px){.scrapbook{height:800px}.memory-note{top:540px}}
+@media(max-width:600px){.scrapbook{height:1200px}.memory-note{top:920px}}
+@media(max-width:600px){
+  .backdrop-script{left:16px;right:16px;top:20px;font-size:clamp(2.75rem,16vw,5.75rem);line-height:1.2;text-align:center;white-space:normal;overflow-wrap:anywhere}
+  .motion .envelope-pocket{filter:none}
+  .motion .envelope-back,.motion .envelope-pocket,.motion .envelope-flap{will-change:transform,opacity}
+  .motion .opening-stage{isolation:isolate}
+}

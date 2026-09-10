@@ -35,40 +35,76 @@
   });
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   function initializeWebsiteMotion() {
-  const compact = window.matchMedia('(max-height: 740px)');
   const opening = document.querySelector('.opening');
+  const card = document.querySelector('.invitation-paper');
+  const flapElement = document.querySelector('.envelope-flap');
+  const envelopeElements = ['.envelope-back','.envelope-pocket','.envelope-flap'].map(selector => document.querySelector(selector));
+  const portrait = document.querySelector('.portrait-print');
+  // Measure the same stable viewport unit used by the sticky stage, not the
+  // changing visible height when a mobile browser's address bar moves.
+  let viewportProbe;
+  if (window.CSS?.supports('height','100svh')) {
+    viewportProbe = document.createElement('div');
+    viewportProbe.className = 'opening-viewport-measure';
+    viewportProbe.setAttribute('aria-hidden','true');
+    document.body.append(viewportProbe);
+  }
   let frame = 0;
+  let start = 0, distance = 1, progress = null, lastTime = 0, active = false;
+  let measuredWidth, measuredHeight;
   const clamp = value => Math.max(0, Math.min(1, value));
-  function draw() {
+  function draw(time = 0) {
     frame = 0;
-    if (!document.documentElement.classList.contains('motion')) return;
-    const rect = opening.getBoundingClientRect();
-    const progress = clamp(-rect.top / Math.max(1, rect.height - window.innerHeight));
+    if (!active) return;
+    const target = clamp(((window.scrollY || 0) - start) / distance);
+    const previous = progress;
+    const elapsed = lastTime ? Math.min(64,Math.max(1,time-lastTime)) : 16;
+    lastTime = time;
+    progress = progress === null ? target : progress + (target-progress)*(1-Math.exp(-elapsed/55));
+    if (Math.abs(target-progress) < .0001) progress = target;
+    if (progress === previous) return;
     const flap = clamp((progress - .08) / .23);
     const extract = clamp((progress - .25) / .43);
     const depart = clamp((progress - .63) / .2);
-    opening.style.setProperty('--flap-angle', `${(1-flap)*180}deg`);
-    opening.style.setProperty('--card-y', `${180*(1-extract)}px`);
-    opening.style.setProperty('--card-scale', `${.76 + .24*extract}`);
-    opening.style.setProperty('--card-alpha', `${clamp((progress-.19)/.12)}`);
-    opening.style.setProperty('--envelope-y', `${depart*220}px`);
-    opening.style.setProperty('--envelope-alpha', `${1-depart}`);
-    opening.style.setProperty('--photo-alpha', `${clamp((progress-.68)/.2)}`);
-    opening.style.setProperty('--photo-x', `${(1-clamp((progress-.68)/.2))*40}px`);
-    opening.style.setProperty('--flap-layer', flap < .5 ? '6' : '2');
+    // Keep animated variables on the affected layers, avoiding style
+    // invalidation across every descendant of the opening section.
+    flapElement.style.setProperty('--flap-angle', `${(1-flap)*180}deg`);
+    flapElement.style.setProperty('--flap-layer', flap < .5 ? '6' : '2');
+    card.style.setProperty('--card-y', `${180*(1-extract)}px`);
+    card.style.setProperty('--card-scale', `${.76 + .24*extract}`);
+    card.style.setProperty('--card-alpha', `${clamp((progress-.19)/.12)}`);
+    envelopeElements.forEach(element => {
+      element.style.setProperty('--envelope-y', `${depart*220}px`);
+      element.style.setProperty('--envelope-alpha', `${1-depart}`);
+    });
+    portrait.style.setProperty('--photo-alpha', `${clamp((progress-.68)/.2)}`);
+    portrait.style.setProperty('--photo-x', `${(1-clamp((progress-.68)/.2))*40}px`);
+    if (progress !== target) schedule();
   }
   function schedule() { if (!frame) frame = requestAnimationFrame(draw); }
   function setMotion() {
-    const cardFits = document.querySelector('.invitation-paper').offsetHeight <= window.innerHeight - 64;
-    document.documentElement.classList.toggle('motion', !reduced.matches && !compact.matches && cardFits);
+    measuredHeight = viewportProbe?.offsetHeight || window.innerHeight;
+    measuredWidth = window.innerWidth;
+    const cardFits = card.offsetHeight <= measuredHeight - 64;
+    active = !reduced.matches && measuredHeight > 740 && cardFits;
+    document.documentElement.classList.toggle('motion', active);
+    const rect = opening.getBoundingClientRect();
+    start = rect.top + (window.scrollY || 0);
+    distance = Math.max(1, rect.height - measuredHeight);
+    progress = null;
     schedule();
   }
   reduced.addEventListener('change', setMotion);
-  compact.addEventListener('change', setMotion);
   window.addEventListener('scroll', schedule, {passive:true});
-  window.addEventListener('resize', setMotion, {passive:true});
+  window.addEventListener('resize', () => {
+    const height = viewportProbe?.offsetHeight || window.innerHeight;
+    if (window.innerWidth !== measuredWidth || height !== measuredHeight) setMotion();
+  }, {passive:true});
   setMotion();
   if (document.fonts) document.fonts.ready.then(setMotion);
+  if ('ResizeObserver' in window) {
+    new ResizeObserver(setMotion).observe(card);
+  }
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver(entries => entries.forEach(entry => {
       if (entry.isIntersecting) {entry.target.classList.add('is-visible'); observer.unobserve(entry.target);}

@@ -110,17 +110,17 @@ window.invitationConfig = {
       {
         src: "assets/memory_1.jpg",
         alt: "Sample portrait of a graduate in cap and gown",
-        caption: "One unforgettable milestone.",
+        caption: "",
       },
       {
         src: "assets/friends.jpg",
         alt: "Sample photo of two friends celebrating graduation",
-        caption: "Countless moments.",
+        caption: "",
       },
       {
         src: "assets/celebration.jpg",
         alt: "Sample photograph of graduates celebrating together",
-        caption: "The people who made it special.",
+        caption: "",
       },
     ],
   },
