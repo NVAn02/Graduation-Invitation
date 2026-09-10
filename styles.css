@@ -13,6 +13,8 @@ a{color:inherit}button,a{-webkit-tap-highlight-color:transparent}a:focus-visible
 @media print{body{background:white;color:#243a46}body:before,.cover,.envelope-back,.envelope-pocket,.envelope-flap,.portrait-print,.opening-note,.backdrop-script,.memories,.rsvp,.farewell,.skip-link{display:none!important}.opening,.motion .opening{height:auto}.opening-stage,.motion .opening-stage{position:static;height:auto;min-height:0;padding:0}.invitation-arrangement{margin:0}.motion .invitation-paper{opacity:1;transform:none}.ceremony{display:block;break-before:page}.ceremony-intro{display:none}.reveal-ready .reveal{opacity:1;translate:none}.personal-message{min-height:0;padding:40px}.invitation-paper,.ceremony-paper{box-shadow:none}}
 .motion .envelope-flap{bottom:10%;margin-bottom:67.857%;height:auto;aspect-ratio:476/227}
 .opening-viewport-measure{position:fixed;inset:0 auto auto 0;width:0;height:100svh;visibility:hidden;pointer-events:none;contain:strict}
+/* The heading receives focus after the intro for screen-reader continuity. */
+#cover-title:focus{outline:none}
 .scrapbook{height:790px}
 .memory-note{top:510px}
 @media(min-width:601px) and (max-width:900px){.scrapbook{height:800px}.memory-note{top:540px}}
