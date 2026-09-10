@@ -21,6 +21,14 @@
     element.src = image.src;
     element.alt = image.alt;
   });
+  document.querySelectorAll('[data-map-link]').forEach(link => {
+    try {
+      const destination = new URL(config.links.googleMaps);
+      if (destination.protocol !== 'https:') return;
+      link.href = destination.href;
+      link.hidden = false;
+    } catch (_) { /* Keep the link hidden until a valid map URL is configured. */ }
+  });
   document.querySelector('.dialog-close').ariaLabel = config.rsvp.dialog.closeLabel;
   document.querySelectorAll('[data-section]').forEach(element => {
     element.hidden = config.sections[element.dataset.section] === false;

@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="intro.css">
+  <link rel="stylesheet" href="ambience.css">
   <script src="config.js"></script>
   <script src="intro.js"></script>
 </head>
@@ -71,7 +72,7 @@
     </section>
     <section class="ceremony" aria-labelledby="ceremony-title" data-section="ceremony">
       <div class="ceremony-intro reveal"><p class="eyebrow" data-content="ceremonySection.eyebrow"></p><h2 id="ceremony-title" class="script" data-lines="ceremonySection.titleLines"></h2></div>
-      <article class="ceremony-paper reveal"><p class="eyebrow" data-content="ceremonySection.cardLabel"></p><p class="ceremony-day" data-content="ceremony.date.day"></p><p class="ceremony-month" data-content="ceremony.date.month"></p><p class="eyebrow" data-content="ceremony.date.year"></p><span class="fine-rule" aria-hidden="true"></span><p class="ceremony-time" data-content="ceremony.time"></p><p class="ceremony-venue" data-content="ceremony.venue"></p><p class="ceremony-address" data-content="ceremony.address"></p><p class="ceremony-timezone" data-content="ceremony.timezone"></p></article>
+      <article class="ceremony-paper reveal"><p class="eyebrow" data-content="ceremonySection.cardLabel"></p><p class="ceremony-day" data-content="ceremony.date.day"></p><p class="ceremony-month" data-content="ceremony.date.month"></p><p class="eyebrow" data-content="ceremony.date.year"></p><span class="fine-rule" aria-hidden="true"></span><p class="ceremony-time" data-content="ceremony.time"></p><p class="ceremony-venue" data-content="ceremony.venue"></p><p class="ceremony-address"><a data-map-link data-content="ceremony.address" target="_blank" rel="noopener noreferrer" hidden></a></p><p class="ceremony-timezone" data-content="ceremony.timezone"></p></article>
     </section>
     <section class="personal-message" aria-labelledby="message-title" data-section="personalMessage"><div class="message-content reveal"><p class="eyebrow" id="message-title" data-content="personalMessage.eyebrow"></p><p class="message-text" data-content="personalMessage.paragraphs.0"></p><p class="message-text" data-lines="personalMessage.paragraphs.1"></p><p class="script signature" data-content="personalMessage.signature"></p><span class="fine-rule" aria-hidden="true"></span></div></section>
     <section class="rsvp" aria-labelledby="rsvp-title" data-section="rsvp"><div class="reply-slip reveal"><p class="eyebrow" id="rsvp-title" data-content="rsvp.eyebrow"></p><button class="rsvp-button" id="rsvp-button" type="button"><span data-content="rsvp.label"></span> <span aria-hidden="true">↗</span></button><p class="reply-note" data-content="rsvp.note"></p></div></section>
@@ -79,5 +80,6 @@
   </main>
   <dialog id="rsvp-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description"><button class="dialog-close" type="button" aria-label="">×</button><p class="eyebrow" data-content="rsvp.dialog.eyebrow"></p><h2 id="dialog-title" class="script" data-content="rsvp.dialog.title"></h2><p id="dialog-description" data-content="rsvp.dialog.message"></p><button class="dialog-done" type="button" data-content="rsvp.dialog.doneLabel"></button></dialog>
   <script src="app.js"></script>
+  <script src="ambience.js"></script>
 </body>
 </html>

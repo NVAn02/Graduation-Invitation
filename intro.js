@@ -60,7 +60,6 @@
     layer.hidden = false;
     button.setAttribute('aria-label',window.invitationConfig?.intro?.openText || 'Open invitation');
     button.addEventListener('click',open);
-    button.focus({preventScroll:true});
     window.scrollTo({top:0,left:0,behavior:'instant'});
     clearTimeout(bootFallback);
   }, {once:true});

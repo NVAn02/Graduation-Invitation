@@ -9,6 +9,7 @@ html.intro-active{overflow:hidden;overscroll-behavior:none;scroll-behavior:auto}
 .intro-composition{width:min(82vw,440px,100svh);position:relative;transform:translateY(5%)}
 .intro-envelope{display:block;position:relative;width:100%;aspect-ratio:1.52;border:0;padding:0;background:none;color:inherit;cursor:pointer;perspective:1100px;transform:translateY(0) scale(1);transition:transform .22s ease;touch-action:manipulation;font-family:var(--editorial);overflow:visible}
 .intro-envelope:focus-visible{outline:2px solid var(--ivory);outline-offset:18px;border-radius:3px}
+.envelope-intro:not([data-state='closed']) .intro-envelope:focus-visible{outline:none}
 .intro-back{position:absolute;inset:0;background:var(--fold);border-radius:3px;box-shadow:0 22px 42px #182d3a40,0 3px 6px #182d3a25;transition:opacity .6s ease,transform 1s ease,box-shadow .25s ease}
 .intro-back:after{content:'';position:absolute;inset:4px;background:linear-gradient(180deg,#cabb9d,var(--fold) 65%);border-radius:2px}
 .intro-card{position:absolute;z-index:2;left:6%;top:5%;width:88%;height:90%;padding:8% 7%;background:var(--ivory) url('assets/letter.webp') center/100% 100%;display:flex;align-items:center;justify-content:center;flex-direction:column;box-shadow:0 2px 9px #243a4620;border-radius:2px;transform:translateY(0);will-change:transform,opacity}

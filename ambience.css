@@ -1,0 +1,15 @@
+/* A separate decorative background; it never receives pointer input. */
+body>main{position:relative;z-index:2}
+.petal-field{position:fixed;inset:0;z-index:1;overflow:hidden;pointer-events:none;user-select:none;contain:strict;opacity:.65}
+.petal-field[hidden],.music-toggle[hidden]{display:none}
+.petal-drift{position:absolute;left:var(--left);top:-32px;width:var(--size);height:var(--size);animation:petal-fall var(--duration) var(--delay) linear infinite;will-change:transform}
+.petal-drift>i{display:block;width:100%;height:65%;border-radius:85% 15% 80% 20%;background:linear-gradient(135deg,#fbefdf,#e5c1bd);box-shadow:inset 1px 1px 2px #fff6;animation:petal-sway var(--sway) var(--delay) ease-in-out infinite alternate;opacity:var(--alpha)}
+@keyframes petal-fall{from{transform:translate3d(-25px,-30px,0)}to{transform:translate3d(65px,calc(100vh + 65px),0)}}
+@keyframes petal-sway{0%{transform:translateX(-18px) rotate(-35deg) rotateY(15deg)}100%{transform:translateX(20px) rotate(120deg) rotateY(65deg)}}
+.petal-field.is-paused .petal-drift,.petal-field.is-paused .petal-drift>i{animation-play-state:paused}
+.music-toggle{position:fixed;z-index:210;right:max(18px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));display:flex;align-items:center;gap:9px;min-height:44px;padding:10px 16px;border:1px solid #f3ebd755;border-radius:24px;background:var(--blue);color:var(--ivory);box-shadow:0 3px 16px #243a4626;font-family:var(--editorial);font-size:1rem;line-height:1.3;cursor:pointer}
+.music-toggle:hover{border-color:var(--ivory)}
+.music-symbol{font-size:1.3rem;line-height:1}
+@media(max-width:600px){.petal-drift:nth-child(n+9){display:none}.music-toggle{right:14px;padding:9px 13px}}
+@media(prefers-reduced-motion:reduce){.petal-field{display:none}}
+@media print{.petal-field,.music-toggle{display:none!important}}

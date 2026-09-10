@@ -52,7 +52,7 @@ window.invitationConfig = {
     time: "9:00 AM",
     timezone: "GMT+7",
     venue: "National Convention Center",
-    address: "https://maps.app.goo.gl/Qn2tZNT4qDU9RWYW9",
+    address: "View on Google Maps",
   },
 
   // ========================================
@@ -129,15 +129,15 @@ window.invitationConfig = {
   // RSVP, ENDING & LINKS
   // ========================================
   rsvp: {
-    eyebrow: "A seat, a smile, a celebration",
+    eyebrow: "A special day, made sweeter with you",
     label: "Celebrate With Me",
-    note: "I hope you'll be there.",
+    note: "Come share a smile, a photo, and this milestone with me.",
     url: "",
     dialog: {
       closeLabel: "Close RSVP note",
-      eyebrow: "You're warmly invited",
-      title: "A little patience.",
-      message: "RSVP details will be shared here soon. Please check back for your invitation to join the celebration.",
+      eyebrow: "An invitation from Ha Phuong",
+      title: "Will you join me?",
+      message: "I would love to celebrate my graduation with you at 9:00 AM on 20 September 2026 (GMT+7) at the National Convention Center. Let's take a few photos, share a little joy, and make another memory together. Please let me know if you can come — having you there would mean so much to me.",
       doneLabel: "Back to the invitation",
     },
   },
@@ -152,6 +152,24 @@ window.invitationConfig = {
     instagram: "",
     zalo: "",
     messenger: "",
+  },
+
+  // ========================================
+  // BACKGROUND ATMOSPHERE
+  // ========================================
+  ambience: {
+    petals: true,
+    music: {
+      enabled: true,
+      // Optional relative audio path, e.g. "assets/music.mp3".
+      // Leave empty to use the gentle original instrumental.
+      src: "assets/background_music.mp3",
+      volume: 0.2,
+      onText: "Music on",
+      offText: "Music off",
+      playLabel: "Play background music",
+      pauseLabel: "Pause background music",
+    },
   },
 
   // ========================================
