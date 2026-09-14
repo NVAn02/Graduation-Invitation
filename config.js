@@ -49,7 +49,7 @@ window.invitationConfig = {
       year: "2026",
       full: "20 September 2026",
     },
-    time: "9:00 AM",
+    time: "11:00 AM",
     timezone: "GMT+7",
     venue: "National Convention Center",
     address: "View on Google Maps",
@@ -137,7 +137,7 @@ window.invitationConfig = {
       closeLabel: "Close RSVP note",
       eyebrow: "An invitation from Ha Phuong",
       title: "Will you join me?",
-      message: "I would love to celebrate my graduation with you at 9:00 AM on 20 September 2026 (GMT+7) at the National Convention Center. Let's take a few photos, share a little joy, and make another memory together. Please let me know if you can come — having you there would mean so much to me.",
+      message: "I would love to celebrate my graduation with you at 11:00 AM on 20 September 2026 (GMT+7) at the National Convention Center. Let's take a few photos, share a little joy, and make another memory together. Please let me know if you can come — having you there would mean so much to me.",
       doneLabel: "Back to the invitation",
     },
   },
@@ -176,7 +176,7 @@ window.invitationConfig = {
   // OPTIONAL SECTIONS
   // ========================================
   sections: {
-    memories: true,
+    memories: false,
     ceremony: true,
     personalMessage: true,
     rsvp: true,

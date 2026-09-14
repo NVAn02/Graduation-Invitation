@@ -101,7 +101,7 @@
     measuredHeight = viewportProbe?.offsetHeight || window.innerHeight;
     measuredWidth = window.innerWidth;
     const cardFits = card.offsetHeight <= measuredHeight - 64;
-    active = measuredWidth > 600 && !reduced.matches && measuredHeight > 740 && cardFits;
+    active = measuredWidth > 900 && !reduced.matches && measuredHeight > 740 && cardFits;
     document.documentElement.classList.toggle('motion', active);
     const rect = opening.getBoundingClientRect();
     start = rect.top + (window.scrollY || 0);
