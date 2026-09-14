@@ -140,6 +140,8 @@
     try {destination = new URL(config.rsvp.url);} catch (_) { /* No destination configured yet. */ }
     if (destination && destination.protocol === 'https:') {window.location.assign(destination.href); return;}
     dialog.showModal();
+    document.querySelector('#dialog-title').focus({preventScroll:true});
+    dialog.scrollTop = 0;
   });
   dialog.querySelectorAll('button').forEach(close => close.addEventListener('click', () => dialog.close()));
   dialog.addEventListener('click', event => {
